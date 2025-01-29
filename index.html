@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/utility.css">
+</head>
+<style>
+    .activated {
+        display: flex;
+        width: 0px;
+        opacity: 0;
+        transition: width 0.3s ease;
+    }
+
+    .song-album {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow-y: auto;
+        max-height: 80vh;
+    }
+
+    .album {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10vh;
+        height: 40vh;
+        min-height: 30vh;
+    }
+
+    .clearfix::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    #Chhath-Puja-Bhajans,
+    #attitude-song {
+        display: block;
+        visibility: visible;
+        z-index: 1;
+    }
+</style>
+
+<body>
+    <div class="top flex justify-space-between align-items-center">
+        <div class="logo wv-30">
+            <img src="./img/logo.svg" alt="logo">
+        </div>
+        <div class="top-right wv-70 flex justify-space-between align-items-center">
+            <div class="search  wv-40 justify-center g-10 align-items-center flex">
+                <div class="home">
+                    <img src="./img/home.svg" alt="logo" width="25">
+                </div>
+                <div class="search-bar  p-1 flex justify-center align-items-center " style="width: 100%;">
+                    <img src="./img/search.svg" alt="logo" width="25">
+                    <input type="search" id="search" placeholder="What do you want to play?">
+                    <img src="./img/search-btn.svg" alt="logo" width="25">
+                </div>
+            </div>
+            <div class="account  wv-30 g-10 flex justify-end align-items-center">
+                <button type="button" class="p-1 ">Sign up</button>
+                <button type="button" class="p-1 ">Log in</button>
+            </div>
+        </div>
+    </div>
+    <div class="hamburger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+    <div class="container g-10 align-items-center justify-center flex">
+        <div class="left activated p-1 g-10">
+
+            <div class="library">
+                <div class="header flex justify-space-between align-items-center">
+                    <div class="header-title g-10 flex justify-center align-items-center">
+                        <img src="./img/library.svg" width="30" alt="Library">
+                        Your Library
+                    </div>
+                    <button class="header-add">
+                        <img src="./img/add.svg" width="30" alt="Add">
+                    </button>
+                </div>
+                <div class="container-library">
+                    <section class="playlist-section">
+                        <div class="text-content">
+                            <h2>Create your first playlist</h2>
+                            <p>It's easy, we'll help you</p>
+                        </div>
+                        <button class="primary-button">Create playlist</button>
+                    </section>
+                    <section class="podcast-section">
+                        <div class="text-content">
+                            <h2>Let's find some podcasts to follow</h2>
+                            <p>We'll keep you updated on new episodes</p>
+                        </div>
+                        <a href="/genre/podcasts-web" class="primary-button">Browse podcasts</a>
+                    </section>
+                </div>
+            </div>
+            <footer class="left-footer">
+                <div class="left-footer-items">
+                    <!-- Legal Links Section -->
+                    <ul>
+                        <li><a href="https://www.spotify.com/np-en/legal/">Legal</a></li>
+                        <li><a href="https://www.spotify.com/np-en/safetyandprivacy/">Safety & Privacy</a></li>
+                        <li><a href="https://www.spotify.com/np-en/legal/privacy-policy/">Privacy Policy</a></li>
+                        <li><a href="https://www.spotify.com/np-en/legal/cookies-policy/">Cookies</a></li>
+                        <li><a href="https://www.spotify.com/np-en/legal/privacy-policy/#s3">About Ads</a></li>
+                        <li><a href="https://www.spotify.com/np-en/accessibility/">Accessibility</a></li>
+                    </ul>
+
+                    <!-- Cookie Policy -->
+                    <div class="cookies">
+                        <a href="https://www.spotify.com/legal/cookies-policy/" target="_blank"
+                            rel="noopener">Cookies</a>
+                    </div>
+
+                    <!-- Language Selector -->
+                </div>
+                <div class="left-footer-language">
+                    <svg role="img" aria-hidden="true" viewBox="0 0 16 16" width="20" height="20" fill="white">
+                        <path
+                            d="M8.152 16H8a8 8 0 1 1 .152 0zm-.41-14.202c-.226.273-.463.713-.677 1.323-.369 1.055-.626 2.496-.687 4.129h3.547c-.06-1.633-.318-3.074-.687-4.129-.213-.61-.45-1.05-.676-1.323-.194-.235-.326-.285-.385-.296h-.044c-.055.007-.19.052-.391.296zM4.877 7.25c.062-1.771.34-3.386.773-4.624.099-.284.208-.554.329-.806a6.507 6.507 0 0 0-4.436 5.43h3.334zm-3.334 1.5a6.507 6.507 0 0 0 4.436 5.43 7.974 7.974 0 0 1-.33-.806c-.433-1.238-.71-2.853-.772-4.624H1.543zm4.835 0c.061 1.633.318 3.074.687 4.129.214.61.451 1.05.677 1.323.202.244.336.29.391.297l.044-.001c.06-.01.19-.061.385-.296.226-.273.463-.713.676-1.323.37-1.055.626-2.496.687-4.129H6.378zm5.048 0c-.061 1.771-.339 3.386-.772 4.624-.082.235-.171.46-.268.674a6.506 6.506 0 0 0 4.071-5.298h-3.03zm3.031-1.5a6.507 6.507 0 0 0-4.071-5.298c.097.214.186.44.268.674.433 1.238.711 2.853.772 4.624h3.031z">
+                        </path>
+                    </svg>
+                    <button>English</button>
+                </div>
+            </footer>
+        </div>
+        <div class="right p-1" style="position: relative;">
+            <div class="song-album p-1" style="position: relative;">
+                <div id="attitude-song" class="album ">
+                    <div class="right-header p-1 flex align-items-center justify-space-between">
+                        <div class="header-title">
+                            <h2>
+                                <span>
+                                    <a draggable="false" href="/section/0JQ5DAnM3wGh0gz1MXnu3B">Popular albums and
+                                        singles</a>
+                                </span>
+                            </h2>
+                        </div>
+                        <div class="show-all">
+                            <a draggable="false" href="/section/0JQ5DAnM3wGh0gz1MXnu3B">
+                                <span>Show all</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card p-1">
+
+                    </div>
+                </div>
+                <div id="Chhath-Puja-Bhajans" class="album clearfix">
+                    <div class="right-header p-1 flex align-items-center justify-space-between">
+                        <div class="header-title">
+                            <h2>
+                                <span>
+                                    <a draggable="false" href="/section/0JQ5DAnM3wGh0gz1MXnu3B">Chhath Puja Bhajans</a>
+                                </span>
+                            </h2>
+                        </div>
+                        <div class="show-all">
+                            <a draggable="false" href="/section/0JQ5DAnM3wGh0gz1MXnu3B">
+                                <span>Show all</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div style="width: 100%;" class="card p-1">
+
+                    </div>
+                </div>
+                <div id="Nepali-Songs" class="album clearfix">
+                    <div class="right-header p-1 flex align-items-center justify-space-between">
+                        <div class="header-title">
+                            <h2>
+                                <span>
+                                    <a draggable="false" href="/section/0JQ5DAnM3wGh0gz1MXnu3B">Nepali Songs</a>
+                                </span>
+                            </h2>
+                        </div>
+                        <div class="show-all">
+                            <a draggable="false" href="/section/0JQ5DAnM3wGh0gz1MXnu3B">
+                                <span>Show all</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div style="width: 100%;" class="card p-1">
+
+                    </div>
+                </div>
+                <div id="Shiv-Bhajans" class="album ">
+                    <div class="right-header p-1 flex align-items-center justify-space-between">
+                        <div class="header-title">
+                            <h2>
+                                <span>
+                                    <a draggable="false" href="/section/0JQ5DAnM3wGh0gz1MXnu3B">Shiv Bhajans</a>
+                                </span>
+                            </h2>
+                        </div>
+                        <div class="show-all">
+                            <a draggable="false" href="/section/0JQ5DAnM3wGh0gz1MXnu3B">
+                                <span>Show all</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div style="width: 100%;" class="card p-1">
+
+                    </div>
+                </div>
+                <div id="Ganesh-Bhajans" class="album ">
+                    <div class="right-header p-1 flex align-items-center justify-space-between">
+                        <div class="header-title">
+                            <h2>
+                                <span>
+                                    <a draggable="false" href="/section/0JQ5DAnM3wGh0gz1MXnu3B">Nonstop Ganesh Bhajans</a>
+                                </span>
+                            </h2>
+                        </div>
+                        <div class="show-all">
+                            <a draggable="false" href="/section/0JQ5DAnM3wGh0gz1MXnu3B">
+                                <span>Show all</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div style="width: 100%;" class="card p-1">
+
+                    </div>
+                </div>
+            </div>
+            <div class="audio-players" style="position:sticky; bottom: 10px;">
+
+            </div>
+
+        </div>
+    </div>
+    <script>
+
+    </script>
+    <script src="./js/script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,666 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+
+.logo img {
+    width: 25px;
+    /* Match the width of home.svg */
+    height: 25px;
+    /* Ensure the logo is proportional */
+    object-fit: contain;
+    /* Prevent distortion */
+}
+
+.home img {
+    width: 25px;
+    /* Maintain size consistency */
+    height: 25px;
+}
+
+/* General styles */
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    flex-wrap: nowrap;
+    background-color: #000;
+    /* Prevent wrapping */
+    gap: 1rem;
+    width: 100%;
+    /* Ensure navbar spans the full width */
+    box-sizing: border-box;
+}
+
+.logo {
+    flex-shrink: 0;
+    /* Prevent the logo from shrinking */
+    max-width: 20%;
+}
+
+.search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    /* Allow search bar to grow */
+    max-width: 600px;
+}
+
+.search .search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #1f1f1f;
+    border-radius: 20px;
+    padding: 0.5rem;
+    flex: 1;
+    max-width: 100%;
+    /* Keep the search bar responsive */
+}
+
+.search .search-bar input {
+    background-color: #1f1f1f;
+    border: none;
+    color: white;
+    font-weight: 600;
+    padding: 0.5rem;
+    width: 100%;
+    /* Take the full available space */
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+
+.search .search-bar input::placeholder {
+    color: white;
+    font-weight: 600;
+}
+
+.account {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    /* Prevent account section from shrinking */
+}
+
+.account button:first-child {
+    background-color: black;
+    color: rgb(179, 179, 179);
+}
+
+.account button:first-child:hover {
+    --text-base: #fff;
+    background-color: black;
+    transform: scale(1.04);
+    color: var(--text-base, #000000);
+}
+
+.account button {
+    border: none;
+    color: black;
+    font-weight: 600;
+    border-radius: 20px;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+
+}
+
+.left {
+    position: absolute;
+    left: 0;
+    height: 90vh;
+    width: 30vw;
+    background-color: #121212;
+    border-radius: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.right {
+    height: 90vh;
+    width: 70vw;
+    background-color: #121212;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    position: relative;
+    top: 0;
+    left: 5vh;
+    width: 20vw;
+}
+
+.line {
+    width: 5vw;
+    height: 0.5vh;
+    background-color: rgb(255, 255, 255);
+}
+
+/* Container */
+.library .header {
+    height: 4vh;
+}
+
+.library .header-add {
+    background-color: #121212;
+    border: none;
+}
+
+.library .container-library {
+    max-width: 900px;
+    height: 33vh;
+    /* Keeps the container compact */
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    /* Enables vertical scrolling */
+    overflow-x: hidden;
+    /* Prevents horizontal scrolling */
+    background-color: none;
+}
+
+/* Section Styles */
+section {
+    margin-bottom: 20px;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+    background-color: #1f1f1f;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.text-content h2 {
+    font-size: 0.7rem;
+    margin-bottom: 10px;
+}
+
+.text-content p {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Buttons */
+.primary-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #fdfbff;
+    color: #000000;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.primary-button:hover,
+.account button:hover {
+    background-color: #fdfdfdf6;
+    font-size: 1.1em;
+    border-radius: 1.2em;
+    color: #000000;
+}
+
+.left-footer {
+    height: 25vh;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 0px 40px;
+    font-family: Arial, sans-serif;
+    background: #00000000;
+    border-radius: 10px;
+    /* position: absolute;
+    bottom: 10vh; */
+}
+
+.left-footer-items {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+}
+
+.left-footer .left-footer-items ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.left-footer .left-footer-items ul li a {
+    color: #cac7c7ec;
+    text-decoration: none;
+}
+
+.left-footer .left-footer-items .cookies a {
+    color: rgba(255, 255, 255, 0.926);
+    text-decoration: none;
+}
+
+.left-footer .left-footer-items .cookies a:hover {
+    color: rgb(255, 255, 255);
+    text-decoration: underline;
+}
+
+.left-footer-language {
+    margin-top: 5vh;
+    width: 35%;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border: 1px solid beige;
+    border-radius: 20px;
+    padding: 5px;
+}
+
+.left-footer-language button {
+    background-color: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.left-footer-language button:hover {
+    font-size: 1.1rem;
+    font-weight: 800;
+}
+
+.right .right-header {
+    width: 100%;
+}
+
+.right .right-header .header-title h2 span a {
+    text-decoration: none;
+    color: white;
+}
+
+.show-all a {
+    text-decoration: none;
+    color: #b3b3b3;
+    ;
+}
+
+.card {
+    height:100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    overflow-y: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-player {
+    width: 100%;
+    margin: auto;
+    border-radius: 5%;
+    background-color: none;
+    position: relative;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Center items horizontally */
+}
+
+.card-player:hover {
+    background-color: #1f1f1f;
+}
+
+.card-player .song-img img {
+    border-radius: 5%;
+    width: 13vw;
+    height: 20vh;
+    margin: 0 auto;
+    /* Center the image */
+}
+
+.card .card-player .song-name {
+    width: 100%;
+}
+
+.card .card-player .song-name a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.card .card-player .song-name a:hover {
+    text-decoration: underline;
+    color: #fffffff1;
+}
+
+.card .card-player .song-name .singer-name span a {
+    text-decoration: none;
+    color: #b3b3b3;
+}
+
+.card .card-player .song-name .singer-name span a:hover {
+    text-decoration: underline;
+    color: #b3b3b3f4;
+}
+
+.play {
+    position: absolute;
+    right: 10%;
+    bottom: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease, bottom 0.3s ease;
+    /* Add transition for opacity and bottom */
+    cursor: pointer;
+}
+
+.active {
+    opacity: 1;
+    bottom: 40%;
+}
+
+.audio-players {
+    z-index: 1000;
+}
+.audio-player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1b5783;
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+    width: 65vw;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.audio-info {
+    display: flex;
+    align-items: center;
+    width: auto;
+}
+
+.download-icon {
+    cursor: pointer;
+}
+
+.song-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    margin-right: 15px;
+}
+
+.song-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.song-title {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.song-artist {
+    margin: 0;
+    font-size: 0.8rem;
+    color: #cccccc;
+}
+
+.audio-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.control-btn {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    filter: invert(1);
+    /* Ensure SVG is white on dark background */
+}
+
+.volume-slider {
+    width: 80px;
+    /* Adjust width for volume slider */
+    height: 5px;
+    border-radius: 5px;
+    background: #ffffff;
+    --webkit-appearance: none;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    width: 10px;
+    height: 10px;
+    background: #1db954;
+    border-radius: 50%;
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+
+.audio-timer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.current-time,
+.duration {
+    font-size: 0.8rem;
+}
+
+.progress-bar {
+    flex-grow: 1;
+    margin: 0 10px;
+    height: 5px;
+    border-radius: 5px;
+    background: #ffffff;
+    --webkit-appearance: none;
+}
+
+.progress-bar::-webkit-slider-thumb {
+    width: 10px;
+    height: 10px;
+    background: #1db954;
+    border-radius: 50%;
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+
+.volume-btn,
+.volume-slider {
+    cursor: pointer;
+}
+
+@media (max-width: 1224px) {
+    .left-footer-language {
+        width: 50%;
+        font-size: 0.6em;
+        padding: 5px;
+    }
+
+    .left-footer {
+        padding: 10px;
+        height: 35vh;
+    }
+}
+
+@media (max-width: 900px) {
+    .left-footer-language {
+        width: 70%;
+        font-size: 0.6em;
+        padding: 5px;
+    }
+
+    .card {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .card .card-player .song-img img {
+        width: 30vw;
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .left-footer {
+        height: 27vh;
+    }
+
+    .left-footer-language {
+        margin-top: 3vh;
+        width: 20%;
+        padding: 8px;
+        font-size: 14px;
+    }
+
+
+    .top {
+        padding: 0.5rem;
+        /* Reduce padding for smaller screens */
+        gap: 5px;
+        /* Adjust gap between elements */
+    }
+
+    .logo {
+        max-width: 15%;
+        /* Resize the logo */
+    }
+
+    .search {
+        max-width: 70%;
+        /* Restrict search bar width */
+    }
+
+    .search .search-bar input {
+        font-size: 0.5rem;
+        /* Adjust font size for input */
+        padding: 0.1rem;
+    }
+
+    .account button {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.5rem;
+        /* Reduce button padding */
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    .text-content h2 {
+        font-size: 1.25rem;
+    }
+
+    .primary-button {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
+    .right .right-header .header-title h2 span a{
+        font-size: 0.8rem;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .left-footer-language {
+        padding: 6px;
+        font-size: 12px;
+        gap: 5px;
+        width: 25%;
+    }
+
+    .left-footer-language button {
+        font-size: 14px;
+    }
+
+    .search {
+        max-width: 60%;
+        /* Shrink search bar further */
+    }
+
+    .search .search-bar {
+        padding: 0.1rem;
+    }
+
+    .search {
+        gap: 0px !important;
+    }
+
+    .logo {
+        max-width: 20%;
+        /* Slightly larger logo for very small screens */
+    }
+
+    .search .search-bar img {
+        width: 18px;
+        /* Shrink icons */
+    }
+
+    .account {
+        gap: 5px;
+        /* Reduce spacing between buttons */
+    }
+
+    .account button {
+        font-size: 0.5rem;
+        /* Smaller text for buttons */
+        padding: 0.3rem 0.3rem;
+    }
+
+    .card {
+        grid-template-columns: 1fr;
+    }
+
+    .card .card-player .song-img img {
+        width: 70vw;
+    }
+
+    .right {
+        width: 90vw;
+    }
+
+    .audio-player {
+        width: 90vw;
+    }
+    .left-footer {
+        height: 35vh;
+    }
+    .line {
+        width: 10vw;
+        height: 0.6vh;
+    }
+   
+}
