@@ -187,7 +187,6 @@ document.addEventListener("DOMContentLoaded", () => {
             isPlaying = true;
             playButton.src = "https://raw.githubusercontent.com/Ankitbhagat2062/GAAC-Bot-Assets/main/songs/img/play.svg";
 
-            // Update UI with current song details
             songTitle.textContent = song.name;
             songArtist.textContent = `Artist: ${song.artist}`;
             songImage.src = song.img;
