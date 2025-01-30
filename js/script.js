@@ -183,9 +183,9 @@ document.addEventListener("DOMContentLoaded", () => {
             currentSongIndex = index;
             const song = allSongs[currentSongIndex];
             audio.src = song.song;
-            audio.play();
+            audio.pause();
             isPlaying = true;
-            playButton.src = "https://raw.githubusercontent.com/Ankitbhagat2062/GAAC-Bot-Assets/main/songs/img/pause.svg";
+            playButton.src = "https://raw.githubusercontent.com/Ankitbhagat2062/GAAC-Bot-Assets/main/songs/img/play.svg";
 
             // Update UI with current song details
             songTitle.textContent = song.name;
