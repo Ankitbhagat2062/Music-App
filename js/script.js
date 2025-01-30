@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.log("No songs found.");
                 return;
             }
-        //    console.log(Ganeshsongs)
+            //    console.log(Ganeshsongs)
             // Populate attitude songs section
             const attitudeSong = document.getElementById("attitude-song");
             const attitudeSongContainer = attitudeSong.querySelector(".card");
@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
             audioPlayerContainer.innerHTML = createSingleAudioPlayerHTML();
 
             // Initialize audio controls
-            initializeAudioControls([...songs, ...Chhathsongs, ...Nepalisongs, ...Shivsongs,...Ganeshsongs]);
+            initializeAudioControls([...songs, ...Chhathsongs, ...Nepalisongs, ...Shivsongs, ...Ganeshsongs]);
 
             // console.log(`Loaded ${songs.length + Chhathsongs.length + Nepalisongs.length + Ganeshsongs.length  + Shivsongs.length} songs.`,"Attitude Song length " + songs.length, " Chhath Song length " + Chhathsongs.length, " Nepali Song Length " + Nepalisongs.length + " Ganesh Bhajan length " + Ganeshsongs.length + " Shiv Bhajan length " + Shivsongs.length);
         } catch (error) {
@@ -78,26 +78,26 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     // Helper function to create card HTML
     const createCardHTML = (song) => {
-        const NamefontSize = song.name.length >= 20 ? "0.8rem" : "1rem";
-        const fontSize = song.artist.length >= 20 ? "0.6rem" : "1rem";
+         NamefontSize = song.name.length >= 20 ? "1rem" : "0.6rem";
+         fontSize = song.artist.length >= 20 ? "1rem" : "0.5rem";
         return `
 <div class="card-player p-1">
-            <div class="song-img">
-                <img src="${song.img}" alt="Image" />
-            </div>
-             <div class="play">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
-                    <circle cx="24" cy="24" r="22" fill="#1DB954" />
-                    <path d="M18 32V16L32 24L18 32Z" fill="#000000" />
-                </svg>
-            </div>
-            <div class="song-name">
-                <p class = "${song.name}" style="font-size:${NamefontSize}">${song.name}</p>
-                <div class="singer-name">
-                <span style=" font-size: ${fontSize};">Artist:${song.artist}</span>
-                </div>
-            </div>
+    <div class="song-img">
+        <img src="${song.img}" alt="Image" />
+    </div>
+     <div class="play">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+            <circle cx="24" cy="24" r="22" fill="#1DB954" />
+            <path d="M18 32V16L32 24L18 32Z" fill="#000000" />
+        </svg>
+    </div>
+    <div class="song-name">
+        <p class = "${song.name}" style="font-size:${NamefontSize}">${song.name}</p>
+        <div class="singer-name">
+        <span style=" font-size: ${fontSize};">Artist:${song.artist}</span>
         </div>
+    </div>
+</div>
 `;
     };
 
@@ -106,35 +106,35 @@ document.addEventListener("DOMContentLoaded", () => {
 <div id="audioPlayer" class="audio-player">
 <div style="width: 100%;" class="audios-info flex justify-space-between">
 <div class="audio-info">
-    <img src="img/default-song.jpg" alt="Song Image" class="song-image" />
-    <div class="song-details">
-        <h3 class="song-title">No Song Playing</h3>
-        <p class="song-artist">Artist: Unknown</p>
-    </div>
+<img src="https://raw.githubusercontent.com/Ankitbhagat2062/GAAC-Bot-Assets/main/songs/img/empty-album.jpg" alt="Song Image" class="song-image" />
+<div class="song-details">
+<h3 class="song-title"style=" font-size: ${NamefontSize};">No Song Playing</h3>
+<p class="song-artist" style=" font-size: ${fontSize};">Artist: Unknown</p>
 </div>
- <div class="download">
-            <svg   class="w-6 h-6 text-gray-800 dark:text-white  download-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+</div>
+<div class="download">
+    <svg   class="w-6 h-6 text-gray-800 dark:text-white  download-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 13V4M7 14H5a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1h-2m-1-5-4 5-4-5m9 8h.01"/>
 </svg>
 
-        </div>
-        </div>
+</div>
+</div>
 <div class="audio-controls">
-    <img src="img/prevsong.svg" alt="Previous Song" class="control-btn prev-btn" />
-    <img src="img/play.svg" alt="Play Song" class="control-btn play-btn" />
-    <img src="img/nextsong.svg" alt="Next Song" class="control-btn next-btn" />
-    <img src="./img/volume.svg" alt="Volume Control" class="control-btn volume-btn" />
-    <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="1" />
+<img src="https://raw.githubusercontent.com/Ankitbhagat2062/GAAC-Bot-Assets/main/songs/img/prevsong.svg" alt="Previous Song" class="control-btn prev-btn" />
+<img src="https://raw.githubusercontent.com/Ankitbhagat2062/GAAC-Bot-Assets/main/songs/img/play.svg" alt="Play Song" class="control-btn play-btn" />
+<img src="https://raw.githubusercontent.com/Ankitbhagat2062/GAAC-Bot-Assets/main/songs/img/nextsong.svg" alt="Next Song" class="control-btn next-btn" />
+<img src="https://raw.githubusercontent.com/Ankitbhagat2062/GAAC-Bot-Assets/main/songs/img/volume.svg" alt="Volume Control" class="control-btn volume-btn" />
+<input type="range" class="volume-slider" min="0" max="1" step="0.01" value="1" />
 </div>
 <div class="audio-timer">
-    <span class="current-time">0:00</span>
-    <input type="range" class="progress-bar" min="0" max="100" value="0" />
-    <span class="duration">0:00</span>
+<span class="current-time">0:00</span>
+<input type="range" class="progress-bar" min="0" max="100" value="0" />
+<span class="duration">0:00</span>
 </div>
 </div>
 `;
-    const initializeAudioControls = (allSongs) => { 
-    //    console.log(allSongs, allSongs.length)
+    const initializeAudioControls = (allSongs) => {
+        //    console.log(allSongs, allSongs.length)
         let currentSongIndex = 0;
         const audio = new Audio(allSongs[currentSongIndex].song);
         const playButton = document.querySelector(".play-btn");
@@ -185,7 +185,7 @@ document.addEventListener("DOMContentLoaded", () => {
             audio.src = song.song;
             audio.play();
             isPlaying = true;
-            playButton.src = "img/pause.svg";
+            playButton.src = "https://raw.githubusercontent.com/Ankitbhagat2062/GAAC-Bot-Assets/main/songs/img/pause.svg";
 
             // Update UI with current song details
             songTitle.textContent = song.name;
@@ -198,10 +198,10 @@ document.addEventListener("DOMContentLoaded", () => {
         playButton.addEventListener("click", () => {
             if (isPlaying) {
                 audio.pause();
-                playButton.src = "img/play.svg";
+                playButton.src = "https://raw.githubusercontent.com/Ankitbhagat2062/GAAC-Bot-Assets/main/songs/img/play.svg";
             } else {
                 audio.play();
-                playButton.src = "img/pause.svg";
+                playButton.src = "https://raw.githubusercontent.com/Ankitbhagat2062/GAAC-Bot-Assets/main/songs/img/pause.svg";
             }
             isPlaying = !isPlaying;
         });
@@ -232,7 +232,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (currentSongIndex < allSongs.length - 1) playSong(currentSongIndex + 1);
             else {
                 isPlaying = false;
-                playButton.src = "img/play.svg";
+                playButton.src = "https://raw.githubusercontent.com/Ankitbhagat2062/GAAC-Bot-Assets/main/songs/img/play.svg";
             }
         });
 
@@ -262,61 +262,26 @@ document.addEventListener("DOMContentLoaded", () => {
         playSong(Math.floor(Math.random() * allSongs.length)); // Play the first song initially
     };
 
-const getSongsByCategory = async (category) => {
-    const response = await fetch(`http://127.0.0.1:3000/songs/${category}`);
-    const text = await response.text();
-    const div = document.createElement("div");
-    div.innerHTML = text;
-    const links = div.getElementsByTagName("a");
-    const songs = [];
-
-    for (let link of links) {
-        let href = link.getAttribute("href");
-        if (!href || href === "../") continue;
-        href = href.replace(/\\/g, "/");
-        const folderPath = `http://127.0.0.1:3000${href}`;
-        // Assuming files are in the root of the category
-        // const folderPath = `http://127.0.0.1:3000/songs/${category}/`; // Adjust the path
-
+    const getSongsByCategory = async (category) => {
         try {
-            const metadataResponse = await fetch(`${folderPath}metadata.txt`);
-            if (metadataResponse.ok) {
-                const metadataText = await metadataResponse.text();
-                const metadata = parseMetadata(metadataText);
-                songs.push({
-                    name: metadata["Track Title"] || "Unknown",
-                    artist: metadata["Artist"] || "Unknown",
-                    album: metadata["Album"] || "Unknown",
-                    releaseDate: metadata["Release Date"] || "Unknown",
-                    img: `${folderPath}cover.jpg`,
-                    song: `${folderPath}audio.mp3`,
-                });
+            const response = await fetch("https://raw.githubusercontent.com/Ankitbhagat2062/GAAC-Bot-Assets/main/songs/songs.json");
+            if (!response.ok) {
+                throw new Error("Failed to fetch songs.json");
             }
+            const data = await response.json();
+            return data[category] || [];
         } catch (error) {
-            console.warn(`No metadata found in ${folderPath}:`, error);
+            console.error("Error fetching song data:", error);
+            return [];
         }
-    }
-    return songs;
-};
+    };
 
-// ... (rest of your code)
-
-    // Call the function for both categories
+    // Fetch all song categories
     const getSongs = () => getSongsByCategory("Attitude Songs");
     const getChhathSongs = () => getSongsByCategory("Chhath Puja Bhajans");
     const getNepaliSongs = () => getSongsByCategory("Nepali Songs");
     const getShivSongs = () => getSongsByCategory("Shiv Bhajans");
     const getGaneshSongs = () => getSongsByCategory("Nonstop Ganesh Bhajan");
-
-    const parseMetadata = (text) => {
-        const lines = text.split("\n");
-        const metadata = {};
-        lines.forEach((line) => {
-            const [key, value] = line.split(":").map((str) => str.trim());
-            if (key && value) metadata[key] = value;
-        });
-        return metadata;
-    };
 
     main();
 
@@ -337,9 +302,10 @@ const getSongsByCategory = async (category) => {
         } else {
             sidebar.classList.add('activated');
             sidebar.style.position = 'absolute';
-            sidebar.style.width = '100vw';
+            // sidebar.style.width = '100vw';
         }
     }
     window.addEventListener('load', checkSidebarState);
 });
+
 
