@@ -11,6 +11,41 @@ body {
     line-height: 1.6;
 }
 
+.activated {
+    display: flex;
+    width: 0px;
+    opacity: 0;
+    transition: width 0.3s ease;
+}
+
+.song-album {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    max-height: 80vh;
+}
+
+.album {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10vh;
+    height: 40vh;
+    min-height: 30vh;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+#Chhath-Puja-Bhajans,
+#attitude-song {
+    display: block;
+    visibility: visible;
+    z-index: 1;
+}
 
 .logo img {
     width: 25px;
@@ -144,18 +179,19 @@ body {
 
 .hamburger {
     display: none;
-    flex-direction: column;
     gap: 5px;
-    position: relative;
-    top: 0;
+    position: absolute;
+    top: 1vh;
     left: 5vh;
-    width: 20vw;
+    width: 5vw;
+    cursor: pointer;
 }
 
-.line {
+.hamburger img {
     width: 5vw;
-    height: 0.5vh;
-    background-color: rgb(255, 255, 255);
+    fill: white;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
 }
 
 /* Container */
@@ -312,7 +348,7 @@ section {
 }
 
 .card {
-    height:100%;
+    height: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     overflow-y: auto;
@@ -384,9 +420,17 @@ section {
     bottom: 40%;
 }
 
-.audio-players {
-    z-index: 1000;
+.right {
+    max-width: 100%;
+    overflow-x: auto;
 }
+
+.song-album {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
 .audio-player {
     display: flex;
     flex-direction: column;
@@ -541,14 +585,21 @@ section {
 
     .left-footer-language {
         margin-top: 3vh;
-        width: 20%;
+        width: 25%;
         padding: 8px;
         font-size: 14px;
     }
 
+    .left-footer-language button {
+        font-size: 12px;
+    }
+
+    .left {
+        width: 60vw;
+    }
 
     .top {
-        padding: 0.5rem;
+        padding: 0 0.5rem;
         /* Reduce padding for smaller screens */
         gap: 5px;
         /* Adjust gap between elements */
@@ -588,7 +639,8 @@ section {
         font-size: 0.9rem;
         padding: 8px 16px;
     }
-    .right .right-header .header-title h2 span a{
+
+    .right .right-header .header-title h2 span a {
         font-size: 0.8rem;
     }
 }
@@ -655,12 +707,14 @@ section {
     .audio-player {
         width: 90vw;
     }
+
     .left-footer {
         height: 35vh;
     }
+
     .line {
         width: 10vw;
         height: 0.6vh;
     }
-   
+
 }

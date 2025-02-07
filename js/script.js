@@ -11,9 +11,25 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.log("No songs found.");
                 return;
             }
-            //    console.log(Ganeshsongs)
-            // Populate attitude songs section
-            const attitudeSong = document.getElementById("attitude-song");
+            const response = await fetch("https://raw.githubusercontent.com/Ankitbhagat2062/GAAC-Bot-Assets/main/songs/songs.json")
+                .then(response => response.json())
+                .then(data => {
+                    const categories = Object.keys(data);
+                    // console.log(categories);
+
+                    const SongAlbum = document.getElementById("Song-Album");
+                    const SongAlbumContainer = SongAlbum.querySelector(".song-album");
+                    if (!SongAlbumContainer) {
+                        console.error("Song album container not found.");
+                        return;
+                    }
+
+                    // Insert each song category inside .song-album
+                    SongAlbumContainer.innerHTML = categories.map(category => createSongAlbumHTML(category, data[category])).join("");
+                })
+                .catch(error => console.error('Error fetching the JSON:', error));
+
+            const attitudeSong = document.getElementById("Attitude Songs");
             const attitudeSongContainer = attitudeSong.querySelector(".card");
             if (!attitudeSongContainer) {
                 console.error("Attitude song container not found.");
@@ -23,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // Render song cards dynamically
             attitudeSongContainer.innerHTML = songs.map((song) => createCardHTML(song)).join("");
             // Populate attitude songs section
-            const ChhathSong = document.getElementById("Chhath-Puja-Bhajans");
+            const ChhathSong = document.getElementById("Chhath Puja Bhajans");
             const ChhathSongContainer = ChhathSong.querySelector(".card");
             if (!ChhathSongContainer) {
                 console.error("Chhath song container not found.");
@@ -31,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             // Render song cards dynamically
             ChhathSongContainer.innerHTML = Chhathsongs.map((song) => createCardHTML(song)).join("");
-            const NepaliSong = document.getElementById("Nepali-Songs");
+            const NepaliSong = document.getElementById("Nepali Songs");
             const NepaliSongContainer = NepaliSong.querySelector(".card");
             if (!NepaliSongContainer) {
                 console.error("Chhath song container not found.");
@@ -40,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // Render song cards dynamically
             NepaliSongContainer.innerHTML = Nepalisongs.map((song) => createCardHTML(song)).join("");
 
-            const ShivSong = document.getElementById("Shiv-Bhajans");
+            const ShivSong = document.getElementById("Shiv Bhajans");
             const ShivSongContainer = ShivSong.querySelector(".card");
             if (!ShivSongContainer) {
                 console.error("Chhath song container not found.");
@@ -49,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // Render song cards dynamically
             ShivSongContainer.innerHTML = Shivsongs.map((song) => createCardHTML(song)).join("");
 
-            const GaneshSong = document.getElementById("Ganesh-Bhajans");
+            const GaneshSong = document.getElementById("Nonstop Ganesh Bhajan");
             const GaneshSongContainer = GaneshSong.querySelector(".card");
             if (!GaneshSongContainer) {
                 console.error("Chhath song container not found.");
@@ -59,7 +75,8 @@ document.addEventListener("DOMContentLoaded", () => {
             GaneshSongContainer.innerHTML = Ganeshsongs.map((song) => createCardHTML(song)).join("");
 
             // Create a single audio player
-            const audioPlayerContainer = document.getElementsByClassName("audio-players")[0];
+            const SongAlbum = document.getElementById("Song-Album");
+            const audioPlayerContainer = SongAlbum.querySelector(".audio-players")
             if (!audioPlayerContainer) {
                 console.error("Audio player container not found.");
                 return;
@@ -76,10 +93,33 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error("Error in main function:", error);
         }
     };
+    const createSongAlbumHTML = (category, songs) => {
+        return `
+        <div id="${category}" class="album">
+            <div class="right-header p-1 flex align-items-center justify-space-between">
+                <div class="header-title">
+                    <h2>
+                        <span>
+                            <a draggable="false" href="#">${category}</a>
+                        </span>
+                    </h2>
+                </div>
+                <div class="show-all">
+                    <a draggable="false" href="#">
+                        <span>Show all</span>
+                    </a>
+                </div>
+            </div>
+                <div class="card">
+                    ${songs.map(song => createCardHTML(song)).join("")}
+                </div>
+        </div>`;
+    };
+
     // Helper function to create card HTML
     const createCardHTML = (song) => {
-         NamefontSize = song.name.length >= 20 ? "1rem" : "0.6rem";
-         fontSize = song.artist.length >= 20 ? "1rem" : "0.5rem";
+        NamefontSize = song.name.length >= 20 ? "1rem" : "0.6rem";
+        fontSize = song.artist.length >= 20 ? "1rem" : "0.5rem";
         return `
 <div class="card-player p-1">
     <div class="song-img">
@@ -100,6 +140,31 @@ document.addEventListener("DOMContentLoaded", () => {
 </div>
 `;
     };
+
+
+    const getSongsByCategory = async (category) => {
+        try {
+            const response = await fetch("https://raw.githubusercontent.com/Ankitbhagat2062/GAAC-Bot-Assets/main/songs/songs.json");
+            if (!response.ok) {
+                throw new Error("Failed to fetch songs.json");
+            }
+            const data = await response.json();
+            return data[category] || [];
+        } catch (error) {
+            console.error("Error fetching song data:", error);
+            return [];
+        }
+    };
+
+    // Fetch all song categories
+    const getSongs = () => getSongsByCategory("Attitude Songs");
+    const getChhathSongs = () => getSongsByCategory("Chhath Puja Bhajans");
+    const getNepaliSongs = () => getSongsByCategory("Nepali Songs");
+    const getShivSongs = () => getSongsByCategory("Shiv Bhajans");
+    const getGaneshSongs = () => getSongsByCategory("Nonstop Ganesh Bhajan");
+
+    main();
+
 
     // Helper function to create single audio player HTML
     const createSingleAudioPlayerHTML = () => `
@@ -260,31 +325,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         playSong(Math.floor(Math.random() * allSongs.length)); // Play the first song initially
     };
-
-    const getSongsByCategory = async (category) => {
-        try {
-            const response = await fetch("https://raw.githubusercontent.com/Ankitbhagat2062/GAAC-Bot-Assets/main/songs/songs.json");
-            if (!response.ok) {
-                throw new Error("Failed to fetch songs.json");
-            }
-            const data = await response.json();
-            return data[category] || [];
-        } catch (error) {
-            console.error("Error fetching song data:", error);
-            return [];
-        }
-    };
-
-    // Fetch all song categories
-    const getSongs = () => getSongsByCategory("Attitude Songs");
-    const getChhathSongs = () => getSongsByCategory("Chhath Puja Bhajans");
-    const getNepaliSongs = () => getSongsByCategory("Nepali Songs");
-    const getShivSongs = () => getSongsByCategory("Shiv Bhajans");
-    const getGaneshSongs = () => getSongsByCategory("Nonstop Ganesh Bhajan");
-
-    main();
-
-
     const hamburgerMenu = document.querySelector('.hamburger');
     const container = document.querySelector('.container ');
     const sidebar = document.querySelector('.left');
