@@ -580,13 +580,12 @@ section {
     }
 
     .left-footer {
-        height: 27vh;
+        height: 25vh;
     }
 
     .left-footer-language {
         margin-top: 3vh;
-        width: 25%;
-        padding: 8px;
+        width: 30%;
         font-size: 14px;
     }
 
@@ -647,15 +646,20 @@ section {
 
 
 @media (max-width: 480px) {
+    .left{
+        width: 80vw;
+    }
+    .left-footer {
+        height: 30vh;
+    }
     .left-footer-language {
-        padding: 6px;
-        font-size: 12px;
+        padding: 3px;
+        font-size: 8px;
         gap: 5px;
         width: 25%;
     }
-
     .left-footer-language button {
-        font-size: 14px;
+        font-size: 8px;
     }
 
     .search {
@@ -708,13 +712,5 @@ section {
         width: 90vw;
     }
 
-    .left-footer {
-        height: 35vh;
-    }
-
-    .line {
-        width: 10vw;
-        height: 0.6vh;
-    }
 
 }
