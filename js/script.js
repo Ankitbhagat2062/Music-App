@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const Nepalisongs = await getNepaliSongs();
             const Shivsongs = await getShivSongs();
             const Ganeshsongs = await getGaneshSongs();
-            // length = songs.length + Chhathsongs.length + Nepalisongs.length + Ganeshsongs.length + Shivsongs.length; 
             if (songs.length === 0 && Chhathsongs.length === 0) {
                 console.log("No songs found.");
                 return;
@@ -15,7 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(response => response.json())
                 .then(data => {
                     const categories = Object.keys(data);
-                    // console.log(categories);
 
                     const SongAlbum = document.getElementById("Song-Album");
                     const SongAlbumContainer = SongAlbum.querySelector(".song-album");
@@ -24,7 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         return;
                     }
 
-                    // Insert each song category inside .song-album
                     SongAlbumContainer.innerHTML = categories.map(category => createSongAlbumHTML(category, data[category])).join("");
                 })
                 .catch(error => console.error('Error fetching the JSON:', error));
