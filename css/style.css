@@ -102,6 +102,63 @@ body {
     flex: 1;
     max-width: 100%;
     /* Keep the search bar responsive */
+    position: relative;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Focused state for search bar */
+.search .search-bar:focus-within {
+    background-color: #121212;
+    box-shadow: 0 0 8px 2px rgba(29, 185, 84, 0.7);
+}
+
+/* Input inside search bar */
+.search .search-bar input {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-weight: 600;
+    padding: 0.5rem;
+    width: 100%;
+    /* Take the full available space */
+    box-sizing: border-box;
+    font-size: 1rem;
+    outline: none;
+}
+
+/* Placeholder color */
+.search .search-bar input::placeholder {
+    color: white;
+    font-weight: 600;
+}
+
+/* Shortcut hint styling */
+.shortcut-hint {
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #222;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 12px;
+    user-select: none;
+    pointer-events: none;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    font-family: monospace;
+}
+
+/* Adjust the right search icon to have some margin */
+.search .search-bar img:last-child {
+    margin-left: 8px;
+    cursor: pointer;
+    transition: filter 0.3s ease;
+}
+
+.search .search-bar img:last-child:hover {
+    filter: brightness(1.2);
 }
 
 .search .search-bar input {
@@ -189,8 +246,7 @@ body {
 
 .hamburger img {
     width: 5vw;
-    fill: white;
-    color: rgb(255, 255, 255);
+    filter: brightness(400%) contrast(0%);
     cursor: pointer;
 }
 
@@ -347,7 +403,7 @@ section {
     ;
 }
 
-.card {
+.card ,#Search-Container{
     height: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -564,7 +620,7 @@ section {
         padding: 5px;
     }
 
-    .card {
+    .card ,#Search-Container{
         grid-template-columns: 1fr 1fr;
     }
 
@@ -696,7 +752,7 @@ section {
         padding: 0.3rem 0.3rem;
     }
 
-    .card {
+    .card,#Search-Container {
         grid-template-columns: 1fr;
     }
 

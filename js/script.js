@@ -88,7 +88,41 @@ document.addEventListener("DOMContentLoaded", () => {
             // Initialize audio controls
             initializeAudioControls([...songs, ...Chhathsongs, ...Nepalisongs, ...Shivsongs, ...Ganeshsongs]);
 
-            // console.log(`Loaded ${songs.length + Chhathsongs.length + Nepalisongs.length + Ganeshsongs.length  + Shivsongs.length} songs.`,"Attitude Song length " + songs.length, " Chhath Song length " + Chhathsongs.length, " Nepali Song Length " + Nepalisongs.length + " Ganesh Bhajan length " + Ganeshsongs.length + " Shiv Bhajan length " + Shivsongs.length);
+            // Add search functionality
+            const searchInput = document.getElementById("search");
+            const searchContainer = document.getElementById("Search-Container");
+            const allSongs = [...songs, ...Chhathsongs, ...Nepalisongs, ...Shivsongs, ...Ganeshsongs];
+
+            searchInput.addEventListener("input", () => {
+                const query = searchInput.value.trim().toLowerCase();
+                document.querySelector('.shortcut-hint').style.display = 'none';
+                if (query === "") {
+                    searchContainer.innerHTML = "";
+                    searchContainer.style.display = "none";
+                    return;
+                }
+                const filteredSongs = allSongs.filter(song =>
+                    song.name.toLowerCase().includes(query) ||
+                    song.artist.toLowerCase().includes(query)
+                );
+                if (filteredSongs.length === 0) {
+                    searchContainer.innerHTML = "<p style='color:white; padding:10px;'>No results found.</p>";
+                    searchContainer.style.display = "grid";
+                    return;
+                }
+                const cardsHTML = filteredSongs.map(song => createCardHTML(song)).join("");
+                searchContainer.innerHTML = cardsHTML;
+                searchContainer.style.display = "grid";
+            });
+
+            // Hide search container when clicking outside
+            document.addEventListener("click", (event) => {
+                if (!searchContainer.contains(event.target) && event.target !== searchInput) {
+                    searchContainer.style.display = "none";
+                    document.querySelector('.shortcut-hint').style.display = 'block';
+                }
+            });
+
         } catch (error) {
             console.error("Error in main function:", error);
         }
@@ -272,10 +306,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
         prevButton.addEventListener("click", () => {
             if (currentSongIndex > 0) playSong(currentSongIndex - 1);
+            audio.play();
+            playButton.src = "https://raw.githubusercontent.com/Ankitbhagat2062/GAAC-Bot-Assets/main/songs/img/pause.svg";
+
         });
 
         nextButton.addEventListener("click", () => {
             if (currentSongIndex < allSongs.length - 1) playSong(currentSongIndex + 1);
+            audio.play();
+            playButton.src = "https://raw.githubusercontent.com/Ankitbhagat2062/GAAC-Bot-Assets/main/songs/img/pause.svg";
+
         });
 
         audio.addEventListener("timeupdate", () => {
@@ -293,7 +333,12 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         audio.addEventListener("ended", () => {
-            if (currentSongIndex < allSongs.length - 1) playSong(currentSongIndex + 1);
+            if (currentSongIndex < allSongs.length - 1) {
+                playSong(currentSongIndex + 1)
+                audio.play();
+                playButton.src = "https://raw.githubusercontent.com/Ankitbhagat2062/GAAC-Bot-Assets/main/songs/img/pause.svg";
+
+            }
             else {
                 isPlaying = false;
                 playButton.src = "https://raw.githubusercontent.com/Ankitbhagat2062/GAAC-Bot-Assets/main/songs/img/play.svg";
@@ -310,6 +355,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 const songIndex = allSongs.findIndex(song => song.name === songName);  // Get the song index from the data attribute
                 if (songIndex !== -1) {
                     playSong(index); // Play the song if found
+                         audio.play();
+                playButton.src = "https://raw.githubusercontent.com/Ankitbhagat2062/GAAC-Bot-Assets/main/songs/img/pause.svg";
+           
                 } else {
                     console.error("Song not found in the array");
                 }
@@ -321,6 +369,29 @@ document.addEventListener("DOMContentLoaded", () => {
             cardPlayer.addEventListener('mouseleave', () => {
                 playElement.classList.remove('active');
             });
+        });
+
+        // Add event listeners to search container cards
+        const searchContainer = document.getElementById("Search-Container");
+        const addSearchCardListeners = () => {
+            const searchCardPlayers = searchContainer.querySelectorAll(".card-player");
+            searchCardPlayers.forEach((cardPlayer) => {
+                const playElement = cardPlayer.querySelector(".play");
+                cardPlayer.addEventListener('mouseenter', () => {
+                    playElement.classList.add('active');
+                });
+                cardPlayer.addEventListener('mouseleave', () => {
+                    playElement.classList.remove('active');
+                });
+            });
+        };
+
+        // Call addSearchCardListeners whenever search results are updated
+        const searchInput = document.getElementById("search");
+        searchInput.addEventListener("input", () => {
+            setTimeout(() => {
+                addSearchCardListeners();
+            }, 60);
         });
 
         playSong(Math.floor(Math.random() * allSongs.length)); // Play the first song initially
