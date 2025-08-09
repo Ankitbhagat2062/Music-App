@@ -50,8 +50,7 @@ This Music App is a modern, responsive web application designed to provide users
 
 Connect with me on social media:
 
-- [Facebook](https://www.facebook.com/Ankitbhagat20262)  
-  <img src="https://cdn-icons-png.flaticon.com/24/733/733547.png" alt="Facebook" width="24" height="24" />
+- [Facebook](https://www.facebook.com/Ankitbhagat20262)<img src="https://cdn-icons-png.flaticon.com/24/733/733547.png" alt="Facebook" width="24" height="24" />
 
 - [GitHub](https://github.com/Ankitbhagat20262)  
   <img src="https://cdn-icons-png.flaticon.com/24/733/733553.png" alt="GitHub" width="24" height="24" />
